@@ -231,6 +231,7 @@ Class Action {
 				$notification_data = "by_who = '". $_SESSION['login_id']. "' ";
 				$notification_data .= ", description = '".$description."' ";
 				$notification_data .= ", is_public = '$user_id' ";
+				$notification_data .= ", kind = 1 ";
 
 				$this->db->query("INSERT INTO notification SET " .$notification_data);
 
@@ -355,6 +356,7 @@ Class Action {
 			$notification_data = "by_who = '$user' ";
 			$notification_data .= ", description = '$title' ";
 			$notification_data .= ", is_public = '$user_id' ";
+			$notification_data .= ", kind = 0 ";
 
 			$this->db->query("INSERT INTO notification SET " .$notification_data);
 			

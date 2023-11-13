@@ -10,6 +10,10 @@
     width: 100px; 
     height: 100px;
 }
+.slsulogo {
+    width: 50%;
+    margin: 80px 70px 0px;
+}
 .notification-image {
     width: 50px; 
     height: 50px;
@@ -37,10 +41,7 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 ?>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">SLSU</span>
-		</a>
+		<img src="assets/img/avatar.png" class="slsulogo">
 		<ul class="side-menu top">
 			<li>
 				<a href="index.php?page=dashboard">
@@ -72,7 +73,7 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 			</li>
 			<li>
 				<a href="index.php?page=sharedfiles">
-					<i class='bx bxs-shopping-bag-alt' ></i>
+					<i class='bx bxs-share-alt'></i>
 					<span class="text">Shared Files</span>
 				</a>
 			</li>
@@ -100,7 +101,7 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 
 			<li>
 				<a href="index.php?page=logs">
-					<i class='bx bxs-group' ></i>
+					<i class='bx bxs-directions' ></i>
 					<span class="text">Logs</span>
 				</a>
 			</li>
@@ -131,23 +132,13 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
+		<i class='bx bx-menu icon' ></i>
 			<!-- Notification -->
 			<li class="custom-dropdown">
                     <button class="notify-toggler custom-dropdown-toggler">
                       <i class="bx bxs-bell icon"></i>
 					  <?php
 						// Fetch and display the notification count
-						// $notificationCountQuery = $conn->query("SELECT COUNT(*) AS notification_count FROM notification WHERE by_who = '".$_SESSION['login_id']."'");
 						$notificationCountQuery = $conn->query("SELECT COUNT(*) AS notification_count FROM notification  WHERE by_who != '".$_SESSION['login_id']."' 
 						AND status = 0 AND (is_public >= 0 OR is_public = '".$_SESSION['login_id']."') ");
 						$notificationCountResult = $notificationCountQuery->fetch_assoc();
@@ -180,7 +171,12 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 										class="img-fluid rounded-circle d-inline-block notification-image">';
 										echo '</div>';
 										echo '<div class="media-body">';
-										echo '<a href="user-profile.html">';
+										// Determine the link based on the "kind" column
+										$notificationLink = ($notification['kind'] == 1) ? 
+										'index.php?page=sharedfiles&notification_id=' . $notification['id'] : 
+										'index.php?page=usersTab/Announcement&notification_id=' . $notification['id'];
+
+										echo '<a href="' . $notificationLink . '">';
 
 										
 										echo '<span class="title mb-0">' . $announcer['name'] . '</span>';

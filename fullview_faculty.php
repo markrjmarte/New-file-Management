@@ -9,6 +9,10 @@
     width: 100px; 
     height: 100px;
 }
+.slsulogo {
+    width: 50%;
+    margin: 80px 70px 0px;
+}
 
 .contact-avatar-image {
     width: 150px; 
@@ -26,10 +30,7 @@ if (isset($_GET['id'])) {
 ?>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">SLSU</span>
-		</a>
+		<img src="assets/img/avatar.png" class="slsulogo">
 		<ul class="side-menu top">
 			<li>
 				<a href="index.php?page=dashboard">
@@ -68,7 +69,7 @@ if (isset($_GET['id'])) {
 			</li>
 			<li>
 				<a href="index.php?page=sharedfiles">
-					<i class='bx bxs-shopping-bag-alt' ></i>
+					<i class='bx bxs-share-alt'></i>
 					<span class="text">Shared Files</span>
 				</a>
 			</li>
@@ -120,16 +121,7 @@ if (isset($_GET['id'])) {
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
+		<i class='bx bx-menu icon' ></i>
 			<a href="#" class="notification">
 				<i class='bx bxs-bell' ></i>
 				<span class="num">8</span>

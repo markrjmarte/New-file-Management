@@ -9,6 +9,10 @@
     width: 50px; 
     height: 50px;
 }
+.slsulogo {
+    width: 50%;
+    margin: 80px 70px 0px;
+}
 .contact-avatar-image {
     width: 150px; 
     height: 150px;
@@ -23,20 +27,40 @@ if (isset($_GET['id'])) {
     }
 }
 
-$announcement_query = $conn->query("SELECT announcement.*, CASE 
-WHEN announcement.announce_to = 0 THEN 'all'
-ELSE 'Personal files'
-END AS profile_image
-FROM announcement 
-order by Date_uploaded DESC;");
+if (isset($_GET['notification_id'])) {
+    $notificationId = $_GET['notification_id'];
+	$query = "SELECT announcement.*, 
+        CASE 
+            WHEN announcement.announce_to = 0 THEN 'all'
+            ELSE 'Personal files'
+        END AS profile_image
+        FROM announcement 
+        INNER JOIN notification ON announcement.title = notification.description AND announcement.date_uploaded = notification.date_updated
+        WHERE notification.id = $notificationId
+        ORDER BY Date_uploaded DESC;
+        
+        UPDATE notification
+        SET status = 1
+        WHERE id = $notificationId AND status = 0;";
+
+	if (mysqli_multi_query($conn, $query)) {
+		$announcement_query = $conn->store_result();
+		mysqli_next_result($conn);
+	}
+} else {
+    $announcement_query = $conn->query("SELECT announcement.*, 
+        CASE 
+            WHEN announcement.announce_to = 0 THEN 'all'
+            ELSE 'Personal files'
+        END AS profile_image
+        FROM announcement 
+        ORDER BY Date_uploaded DESC");
+}
 
 ?>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">SLSU</span>
-		</a>
+		<img src="assets/img/avatar.png" class="slsulogo">
 		<ul class="side-menu top">
 			<li>
 				<a href="index.php?page=dashboard">
@@ -46,7 +70,7 @@ order by Date_uploaded DESC;");
 			</li>
 
 			<?php if($_SESSION['login_type'] == 2): ?>
-				<li>
+				<li class="active">
 					<a href="index.php?page=usersTab/Announcement">
 						<i class='bx bxs-message-dots' ></i>
 						<span class="text">Announcement</span>
@@ -68,7 +92,7 @@ order by Date_uploaded DESC;");
 			</li>
 			<li>
 				<a href="index.php?page=sharedfiles">
-					<i class='bx bxs-shopping-bag-alt' ></i>
+					<i class='bx bxs-share-alt'></i>
 					<span class="text">Shared Files</span>
 				</a>
 			</li>
@@ -96,7 +120,7 @@ order by Date_uploaded DESC;");
 
 			<li>
 				<a href="index.php?page=logs">
-					<i class='bx bxs-group' ></i>
+					<i class='bx bxs-directions' ></i>
 					<span class="text">Logs</span>
 				</a>
 			</li>
@@ -127,23 +151,13 @@ order by Date_uploaded DESC;");
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
+		<i class='bx bx-menu icon' ></i>
 			<!-- Notification -->
 			<li class="custom-dropdown">
                     <button class="notify-toggler custom-dropdown-toggler">
                       <i class="bx bxs-bell icon"></i>
 					  <?php
 						// Fetch and display the notification count
-						// $notificationCountQuery = $conn->query("SELECT COUNT(*) AS notification_count FROM notification WHERE by_who = '".$_SESSION['login_id']."'");
 						$notificationCountQuery = $conn->query("SELECT COUNT(*) AS notification_count FROM notification  WHERE by_who != '".$_SESSION['login_id']."' 
 						AND status = 0 AND (is_public >= 0 OR is_public = '".$_SESSION['login_id']."') ");
 						$notificationCountResult = $notificationCountQuery->fetch_assoc();
@@ -176,7 +190,12 @@ order by Date_uploaded DESC;");
 										class="img-fluid rounded-circle d-inline-block notification-image">';
 										echo '</div>';
 										echo '<div class="media-body">';
-										echo '<a href="user-profile.html">';
+										// Determine the link based on the "kind" column
+										$notificationLink = ($notification['kind'] == 1) ? 
+										'index.php?page=sharedfiles&notification_id=' . $notification['id'] : 
+										'index.php?page=usersTab/Announcement&notification_id=' . $notification['id'];
+
+										echo '<a href="' . $notificationLink . '">';
 
 										
 										echo '<span class="title mb-0">' . $announcer['name'] . '</span>';
@@ -211,8 +230,12 @@ order by Date_uploaded DESC;");
 			<div class="head-title" style = "justify-content: space-between;">
 				<div class="pagetitle">
 					<h1 style = "font-weight: 600;">Announcement</h1>
-					<ol class="breadcrumb"><li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> Home </a></li> 
-					<li class="breadcrumb-item"><a href = 'index.php?page=usersTab/add-announcement'> New announcement </a></ol>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> Home </a></li> 
+						<?php if($_SESSION['login_type'] == 1): ?>
+							<li class="breadcrumb-item"><a href = 'index.php?page=usersTab/add-announcement'> New announcement </a>
+						<?php endif; ?></li>
+					</ol>
 				</div><!-- End Page Title -->
 			</div>
 

@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Notary Public</title>
+  <title>File Management</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -38,13 +38,17 @@
 
 </head>
 <style>
-  .avatar{
-    width: 100px;
-    height: 100px;
+.avatar {
+    width: 50%;
+    height: 50%;
     border-radius: 50%;
     position: absolute;
-    top: -50px;
-    left: calc(50% - 50px);
+    top: -90px;
+    left: calc(50% - 84px);
+}
+.slsulogo {
+    width: 50%;
+    margin: 80px 70px 0px;
 }
   #login-left{
     position: absolute;
@@ -77,6 +81,7 @@
     transform: translate(0%,0%);
 }
 .new-login-wrapper {
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     color: var(--blue);
@@ -131,8 +136,7 @@ h1, h2, h3, h4, h5, h6 {
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
             <div class="login-bg">
                   <div class="new-login-wrapper">
-                         <img src="assets/img/avatar.png" class="avatar">
-                         <center><h3>Sign in</h3></center>
+                  <center><img src="assets/img/avatar.png" class="avatar"></center>
                           <form class="row g-3" id="login-form">
                             <div class="col-12">
                               <label for="username" class="new-input-label">Username</label>

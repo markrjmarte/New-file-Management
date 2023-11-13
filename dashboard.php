@@ -8,6 +8,10 @@
     width: 50px; 
     height: 50px;
 }
+.slsulogo {
+    width: 50%;
+    margin: 80px 70px 0px;
+}
 .contact-avatar-image {
     width: 150px; 
     height: 150px;
@@ -93,10 +97,8 @@ if ($resultnotifi_count) {
 ?>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">SLSU</span>
-		</a>
+		
+			<img src="assets/img/avatar.png" class="slsulogo">
 		<ul class="side-menu top">
 			<li class="active">
 				<a href="index.php?page=dashboard">
@@ -129,7 +131,7 @@ if ($resultnotifi_count) {
 			</li>
 			<li>
 				<a href="index.php?page=sharedfiles">
-					<i class='bx bxs-shopping-bag-alt' ></i>
+					<i class='bx bxs-share-alt'></i>
 					<span class="text">Shared Files</span>
 				</a>
 			</li>
@@ -158,7 +160,7 @@ if ($resultnotifi_count) {
 
 			<li>
 				<a href="index.php?page=logs">
-					<i class='bx bxs-group' ></i>
+					<i class='bx bxs-directions' ></i>
 					<span class="text">Logs</span>
 				</a>
 			</li>
@@ -188,21 +190,7 @@ if ($resultnotifi_count) {
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<!-- <input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label> -->
-			<!-- <a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a> -->
-
+			<i class='bx bx-menu icon' ></i>
 				<!-- Notification -->
 				<li class="custom-dropdown">
                     <button class="notify-toggler custom-dropdown-toggler">
@@ -241,7 +229,12 @@ if ($resultnotifi_count) {
 										class="img-fluid rounded-circle d-inline-block notification-image">';
 										echo '</div>';
 										echo '<div class="media-body">';
-										echo '<a href="user-profile.html">';
+										// Determine the link based on the "kind" column
+										$notificationLink = ($notification['kind'] == 1) ? 
+										'index.php?page=sharedfiles&notification_id=' . $notification['id'] : 
+										'index.php?page=usersTab/Announcement&notification_id=' . $notification['id'];
+
+										echo '<a href="' . $notificationLink . '">';
 
 										
 										echo '<span class="title mb-0">' . $announcer['name'] . '</span>';
