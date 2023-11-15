@@ -10,8 +10,8 @@
     height: 50px;
 }
 .slsulogo {
-    width: 50%;
-    margin: 80px 70px 0px;
+    width: 70%;
+    margin: 20px 45px 0px;
 }
 .contact-avatar-image {
     width: 150px; 
@@ -226,6 +226,10 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 		<main>
 
 			<div class="head-title" style = "justify-content: space-between;">
+				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
+						<div class="toast-body text-white">
+						</div>
+				</div>
 			
 				<div class="pagetitle">
 					<?php 
@@ -250,10 +254,9 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 					}
 					?>
 				</div><!-- End Page Title -->
-				
-				<div>
-				<button id="new_folder" type="button" class="btn btn-primary btn-pill">New Folder</button>
-				<button id="new_file" type="button" class="btn btn-primary btn-pill">Upload File</button>
+				<div id !="alert_toast">
+					<button id="new_folder" type="button" class="btn btn-primary btn-pill">New Folder</button>
+					<button id="new_file" type="button" class="btn btn-primary btn-pill">Upload File</button>
 				</div>
 			</div>
 
@@ -413,7 +416,7 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 
 			$(".folder-item .file-option.edit").on("click", function(e){
 				e.preventDefault()
-				uni_modal('Rename Folder','manage_folder.php?fid=<?php echo $folder_parent ?>&id='+$(this).attr('data-id') )
+				uni_modal('Rename Folder','manage_folder_rename.php?fid=<?php echo $folder_parent ?>&id='+$(this).attr('data-id') )
 			})
 
 			$(".folder-item .file-option.delete").on("click", function(e){

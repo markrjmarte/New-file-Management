@@ -10,8 +10,8 @@
     height: 50px;
 }
 .slsulogo {
-    width: 50%;
-    margin: 80px 70px 0px;
+    width: 70%;
+    margin: 20px 45px 0px;
 }
 .contact-avatar-image {
     width: 150px; 
@@ -237,6 +237,10 @@ if (isset($_GET['notification_id'])) {
 						<?php endif; ?></li>
 					</ol>
 				</div><!-- End Page Title -->
+				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast-body text-white">
+					</div>
+				</div>
 			</div>
 
 			<!-- Folder Display -->

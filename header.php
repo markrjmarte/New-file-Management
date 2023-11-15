@@ -11,12 +11,7 @@
   <script src="assets1/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
   <script type="text/javascript" src="assets1/font-awesome/js/all.min.js"></script>
   <script type="text/javascript" src="assets1/js/jquery-te-1.4.0.min.js" charset="utf-8"></script>
-  <!-- <script src="assets/vendor/simple-datatables/simple-datatables.js"></script> -->
-
-
-  <!-- Template Main CSS File -->
-  <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
-
+  
   <!-- Favicons -->
   <link href="assets/img/favicon1.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -32,8 +27,6 @@
   <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <!-- <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet"> -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script src="https://cdn.tiny.cloud/1/<your-api-key>/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

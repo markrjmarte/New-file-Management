@@ -11,8 +11,8 @@
     height: 100px;
 }
 .slsulogo {
-    width: 50%;
-    margin: 80px 70px 0px;
+    width: 70%;
+    margin: 20px 45px 0px;
 }
 .notification-image {
     width: 50px; 
@@ -215,7 +215,12 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 					<ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.php?page=usersTab/Announcement"> Home</a></li> 
 					<li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> New announcement </a></ol>
 				</div><!-- End Page Title -->
+				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast-body text-white">
+					</div>
+				</div>
 			</div>
+			
 
 			<!-- Folder Display -->
 			<ul class="box-info">
@@ -303,11 +308,11 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 				contentType: false,
 				success: function(resp) {
 					if(resp == 1) {
-						alert_toast("Data successfully updated", 'success');
+						alert_toast("Announcement successfully posted", 'success');
 						setTimeout(function(){
 							location.reload();
 						}, 1500);
-						window.location.href ="index.php?page=usersTab/Announcement";
+						
 					}
 				}
 			});

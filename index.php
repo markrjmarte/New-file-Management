@@ -8,10 +8,10 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="assets1/material/css/materialdesignicons.min.css" rel="stylesheet" />
 
@@ -26,14 +26,10 @@
 </head>
 <body>
 
-	<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-body text-white">
-      </div>
-    </div>
+	 
 	<main id="main" class="main">
         <?php $page = isset($_GET['page']) ? $_GET['page'] :'dashboard'; ?>
       <?php include $page.'.php' ?>
-
   </main>
 
 	<div id="preloader"></div>
@@ -99,6 +95,9 @@
                 $('#uni_modal .modal-title').html($title)
                 $('#uni_modal .modal-body').html(resp)
                 $('#uni_modal').modal('show')
+                $('#submit').on('click', function () {
+                  $('#uni_modal').modal('hide');
+                });
                 end_load()
             }
         }

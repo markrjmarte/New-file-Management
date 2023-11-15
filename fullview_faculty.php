@@ -10,8 +10,8 @@
     height: 100px;
 }
 .slsulogo {
-    width: 50%;
-    margin: 80px 70px 0px;
+    width: 70%;
+    margin: 20px 45px 0px;
 }
 
 .contact-avatar-image {

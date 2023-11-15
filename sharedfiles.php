@@ -10,8 +10,8 @@
     height: 50px;
 }
 .slsulogo {
-    width: 50%;
-    margin: 80px 70px 0px;
+    width: 70%;
+    margin: 20px 45px 0px;
 }
 .contact-avatar-image {
     width: 150px; 
@@ -255,6 +255,10 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 					<h1 style = "font-weight: 600;">Shared Files</h1>
 					<ol class="breadcrumb"><li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> Home </a></li></ol>
 				</div><!-- End Page Title -->
+				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast-body text-white">
+					</div>
+				</div>
 			</div>
 
 			<!-- Folder Display -->

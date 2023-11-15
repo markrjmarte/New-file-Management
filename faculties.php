@@ -15,8 +15,8 @@
     height: 50px;
 }
 .slsulogo {
-    width: 50%;
-    margin: 80px 70px 0px;
+    width: 70%;
+    margin: 20px 45px 0px;
 }
 .contact-avatar-image {
     width: 150px; 
@@ -202,6 +202,10 @@ if (isset($_GET['id'])) {
 		<!-- MAIN -->
 		<main>
 			<div class="head-title" style = "justify-content: space-between;">
+				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast-body text-white">
+					</div>
+				</div>
 				<div class="pagetitle">
 					<h1 style = "font-weight: 600;">Manage faculty</h1>
 					<ol class="breadcrumb"><li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> Home </a></li></ol>
@@ -347,34 +351,7 @@ if (isset($_GET['id'])) {
 	<script src="plugins/simplebar/simplebar.min.js"></script>
 	<script src="js/mono.js"></script>
 	<script src="script.js"></script>
-	<script>
-		document.getElementById("search-icon").addEventListener("click", function() {
-				// Call the search function when the search icon is clicked.
-				search();
-		});
-
-		document.getElementById("search-input").addEventListener("input", function() {
-				// Call the search function when the user types in the search input.
-				search();
-		});
-		
-		function search() {
-				var input = document.getElementById("search-input").value.toLowerCase();
-				var table = document.querySelector("table");
-				var rows = table.getElementsByTagName("tr");
-
-				for (var i = 1; i < rows.length; i++) {
-					var row = rows[i];
-					var data = row.textContent.toLowerCase();
-
-					if (data.includes(input)) {
-						row.style.display = "";
-					} else {
-						row.style.display = "none";
-					}
-				}
-			}
-	</script>
+	
 	<script>
 	// JavaScript to update the modal content when a user is clicked
 	$('.card-body a[data-toggle="modal"]').click(function () {

@@ -11,8 +11,8 @@
     height: 200px;
 }
 .slsulogo {
-    width: 50%;
-    margin: 80px 70px 0px;
+    width: 70%;
+    margin: 20px 45px 0px;
 }
 .notification-image {
     width: 50px; 
@@ -220,6 +220,10 @@ if (isset($_GET['id'])) {
 					<ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.php?page=faculties"> Home</a></li> 
 					<li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> User profile </a></ol>
 				</div><!-- End Page Title -->
+				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast-body text-white">
+					</div>
+				</div>
 			</div>
 
             <!-- Folder Display -->
