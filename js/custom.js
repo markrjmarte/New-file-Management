@@ -75,7 +75,7 @@ $(document).ready(function () {
         {
           latLng: [43.8, -120.55],
           name: "Oregon",
-          style: { fill: "#9e6de0", stroke: "#9e6de0" },
+          style: { fill: "var(--blue)", stroke: "var(--blue)" },
         },
       ],
     });

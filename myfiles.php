@@ -1,8 +1,8 @@
 
 <head>
-	<link rel="stylesheet" href="style1.css">
-	<link rel="stylesheet" href="style2.css">
-	<link rel="stylesheet" href="style4.css">
+	<link rel="stylesheet" href="uicss/style1.css">
+	<link rel="stylesheet" href="uicss/style2.css">
+	<link rel="stylesheet" href="uicss/style4.css">
 </head>
 <style>
 .notification-image {
@@ -11,7 +11,13 @@
 }
 .slsulogo {
     width: 70%;
-    margin: 20px 45px 0px;
+    margin: 30px 45px 0px;
+	filter: drop-shadow(0px 0px 2px var(--blue));
+}
+.lod {
+    width: 70%;
+    margin: 30px 45px 0px;
+	filter: drop-shadow(0px 0px 2px var(--blue));
 }
 .contact-avatar-image {
     width: 150px; 
@@ -149,7 +155,32 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-		<i class='bx bx-menu icon' ></i>
+			<!-- <div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
+						<div class="loader">
+							<img src="assets/img/avatar.png" class="lod ">
+						</div>
+	
+							<style>
+							
+							.loader {
+							position: fixed;
+							left: 0px;
+							top: 0px;
+							width: 100%;
+							height: 100%;
+							z-index: 9999;
+							background: var(--grey);
+							}
+							
+							</style>
+			</div> -->
+			<i class='bx bx-menu icon' ></i>
+			<form>
+				<div class="form-input">
+					<input type="search" placeholder="Search..." id="search">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
 			<!-- Notification -->
 			<li class="custom-dropdown">
                     <button class="notify-toggler custom-dropdown-toggler">
@@ -207,12 +238,6 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 								</div>
 							</div>
                      	</div>
-                     <!-- <footer class="border-top dropdown-notify-footer">
-                        <div class="d-flex justify-content-between align-items-center py-2 px-4">
-                          <span>Last updated</span>
-                          <a id="refress-button" href="javascript:" class="btn mdi mdi-cached btn-refress"></a>
-                        </div>
-                      </footer> -->
                     </div>
             	</li>
 				<!-- Notification -->
@@ -226,11 +251,6 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 		<main>
 
 			<div class="head-title" style = "justify-content: space-between;">
-				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
-						<div class="toast-body text-white">
-						</div>
-				</div>
-			
 				<div class="pagetitle">
 					<?php 
 					$id = $folder_parent;
@@ -254,7 +274,11 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 					}
 					?>
 				</div><!-- End Page Title -->
-				<div id !="alert_toast">
+				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
+						<div class="toast-body text-white">
+						</div>
+				</div>
+				<div id="action_buttons" style="margin-block-end: auto;">
 					<button id="new_folder" type="button" class="btn btn-primary btn-pill">New Folder</button>
 					<button id="new_file" type="button" class="btn btn-primary btn-pill">Upload File</button>
 				</div>
@@ -402,6 +426,30 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 	<script src="js/custom.js"></script>
 	<script src="script.js"></script>
 	<script>
+		
+		$(document).ready(function () {
+			
+			function showButtons() {
+				$('#action_buttons').show();
+			}
+
+			function hideButtons() {
+				$('#action_buttons').hide();
+			}
+			
+			$('.toast').on('hidden.bs.toast', function () {
+				showButtons();
+			});
+
+			
+			$('.toast').on('show.bs.toast', function () {
+				hideButtons();
+			});
+
+			showButtons();
+		});
+	</script>
+	<script>
 			$('#new_folder').click(function(){
 				uni_modal('','manage_folder.php?fid=<?php echo $folder_parent ?>')
 			})
@@ -454,10 +502,6 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 				var fileId = $(this).attr('data-id');
 				window.open('display_file.php?id=' + fileId);
 			})
-			// 	$(document).bind("click", function(event) {
-			// 	$("div.custom-menu").hide();
-			// 	$('#file-item').removeClass('active')
-			// });
 
 			$(document).keyup(function(e){
 
@@ -520,4 +564,24 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 				})
 			}
 
+	</script>
+	<script>
+	$(document).ready(function() {
+		$('#search').keyup(function() {
+			var searchTerm = $(this).val().toLowerCase();
+
+			// Filter folders based on folder names
+			$('.folder-item').each(function() {
+				var folderName = $(this).find('h3').text().toLowerCase();
+				$(this).toggle(folderName.includes(searchTerm));
+			});
+
+			// Filter files based on filenames and dates
+			$('.file-item').each(function() {
+				var fileName = $(this).find('td:nth-child(2)').text().toLowerCase();
+				var fileDate = $(this).find('td:nth-child(3)').text().toLowerCase();
+				$(this).toggle(fileName.includes(searchTerm) || fileDate.includes(searchTerm));
+			});
+		});
+	});
 	</script>

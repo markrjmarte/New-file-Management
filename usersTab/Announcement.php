@@ -1,8 +1,8 @@
 
 <head>
-	<link rel="stylesheet" href="style1.css">
-	<link rel="stylesheet" href="style2.css">
-	<link rel="stylesheet" href="style4.css">
+	<link rel="stylesheet" href="uicss/style1.css">
+	<link rel="stylesheet" href="uicss/style2.css">
+	<link rel="stylesheet" href="uicss/style4.css">
 </head>
 <style>
 .notification-image {
@@ -11,7 +11,8 @@
 }
 .slsulogo {
     width: 70%;
-    margin: 20px 45px 0px;
+    margin: 30px 45px 0px;
+	filter: drop-shadow(0px 0px 2px var(--blue));
 }
 .contact-avatar-image {
     width: 150px; 
@@ -210,12 +211,6 @@ if (isset($_GET['notification_id'])) {
 								</div>
 							</div>
                      	</div>
-                     <!-- <footer class="border-top dropdown-notify-footer">
-                        <div class="d-flex justify-content-between align-items-center py-2 px-4">
-                          <span>Last updated</span>
-                          <a id="refress-button" href="javascript:" class="btn mdi mdi-cached btn-refress"></a>
-                        </div>
-                      </footer> -->
                     </div>
             	</li>
 				<!-- Notification -->
@@ -319,7 +314,7 @@ if (isset($_GET['notification_id'])) {
 							</button>
 						</div>
 						<div class="modal-body pt-0" style="margin: 0px 20px 10px 20px;">
-							<h3 id="announce_title" style="padding-bottom: 10px;"></h3>
+							<h3 id="announce_title" style="color: var(--blue); padding-bottom: 10px;"></h3>
 							<p id="announce_message" style="padding-bottom: 20px;"></p>
 							<p style="color: var(--blue);" id="downloadLabel">View file below:</p>
 							<button class="btn btn-primary" id="viewFileBtn"><span id="announce_filename"></span></button>

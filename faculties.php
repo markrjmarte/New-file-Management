@@ -1,8 +1,8 @@
 
 <head>
-	<link rel="stylesheet" href="style1.css">
-	<link rel="stylesheet" href="style2.css">
-	<link rel="stylesheet" href="style4.css">
+	<link rel="stylesheet" href="uicss/style1.css">
+	<link rel="stylesheet" href="uicss/style2.css">
+	<link rel="stylesheet" href="uicss/style4.css">
 </head>
 <style>
 .avatar-image {
@@ -16,7 +16,8 @@
 }
 .slsulogo {
     width: 70%;
-    margin: 20px 45px 0px;
+    margin: 30px 45px 0px;
+	filter: drop-shadow(0px 0px 2px var(--blue));
 }
 .contact-avatar-image {
     width: 150px; 
@@ -184,12 +185,6 @@ if (isset($_GET['id'])) {
 								</div>
 							</div>
                      	</div>
-                     <!-- <footer class="border-top dropdown-notify-footer">
-                        <div class="d-flex justify-content-between align-items-center py-2 px-4">
-                          <span>Last updated</span>
-                          <a id="refress-button" href="javascript:" class="btn mdi mdi-cached btn-refress"></a>
-                        </div>
-                      </footer> -->
                     </div>
             	</li>
 				<!-- Notification -->
@@ -202,15 +197,18 @@ if (isset($_GET['id'])) {
 		<!-- MAIN -->
 		<main>
 			<div class="head-title" style = "justify-content: space-between;">
-				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
-					<div class="toast-body text-white">
-					</div>
-				</div>
 				<div class="pagetitle">
 					<h1 style = "font-weight: 600;">Manage faculty</h1>
 					<ol class="breadcrumb"><li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> Home </a></li></ol>
 				</div><!-- End Page Title -->
-				<button id="new_user" type="button" class="btn btn-primary btn-pill">Add faculty</button>
+				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
+						<div class="toast-body text-white">
+						</div>
+				</div>
+				<div id="action_buttons" style="margin-block-end: auto;">
+					<button id="new_user" type="button" class="btn btn-primary btn-pill">Add faculty</button>
+				</div>
+				
 			</div>
 
 			<!-- Folder Display -->
@@ -351,7 +349,30 @@ if (isset($_GET['id'])) {
 	<script src="plugins/simplebar/simplebar.min.js"></script>
 	<script src="js/mono.js"></script>
 	<script src="script.js"></script>
-	
+	<script>
+		
+		$(document).ready(function () {
+			
+			function showButtons() {
+				$('#action_buttons').show();
+			}
+
+			function hideButtons() {
+				$('#action_buttons').hide();
+			}
+			
+			$('.toast').on('hidden.bs.toast', function () {
+				showButtons();
+			});
+
+			
+			$('.toast').on('show.bs.toast', function () {
+				hideButtons();
+			});
+
+			showButtons();
+		});
+	</script>
 	<script>
 	// JavaScript to update the modal content when a user is clicked
 	$('.card-body a[data-toggle="modal"]').click(function () {

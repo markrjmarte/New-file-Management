@@ -1,9 +1,9 @@
 
 <head>
-	<link rel="stylesheet" href="style1.css">
-	<link rel="stylesheet" href="style2.css">
-	<link rel="stylesheet" href="style5.css">
-	<link rel="stylesheet" href="style4.css">
+	<link rel="stylesheet" href="uicss/style1.css">
+	<link rel="stylesheet" href="uicss/style2.css">
+	<link rel="stylesheet" href="uicss/style5.css">
+	<link rel="stylesheet" href="uicss/style4.css">
 </head>
 <style>
 	.avatar-image {
@@ -12,7 +12,8 @@
 }
 .slsulogo {
     width: 70%;
-    margin: 20px 45px 0px;
+    margin: 30px 45px 0px;
+	filter: drop-shadow(0px 0px 2px var(--blue));
 }
 .notification-image {
     width: 50px; 
@@ -34,8 +35,8 @@ if(isset($_SESSION['login_id'])){
 	}
 }
 
-$users = $conn->query("SELECT * FROM users WHERE id != $user_id"); // Replace 'users' with your user table name
-$selected_user = isset($_GET['user_id']) ? $_GET['user_id'] : ''; // Get the selected user ID
+$users = $conn->query("SELECT * FROM users WHERE id != $user_id");
+$selected_user = isset($_GET['user_id']) ? $_GET['user_id'] : ''; 
 $announcement_query = $conn->query("SELECT * FROM announcement order by Date_uploaded DESC;");
 
 ?>
@@ -191,12 +192,6 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 								</div>
 							</div>
                      	</div>
-                     <!-- <footer class="border-top dropdown-notify-footer">
-                        <div class="d-flex justify-content-between align-items-center py-2 px-4">
-                          <span>Last updated</span>
-                          <a id="refress-button" href="javascript:" class="btn mdi mdi-cached btn-refress"></a>
-                        </div>
-                      </footer> -->
                     </div>
             	</li>
 				<!-- Notification -->

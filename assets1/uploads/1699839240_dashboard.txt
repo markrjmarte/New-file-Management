@@ -35,7 +35,7 @@ $files = $conn->query("SELECT * FROM files where folder_id = $folder_parent and 
 .custom-menu {
 	z-index: 1000;
 	position: absolute;
-	background-color: #ffffff;
+	background-color: var(--light);
 	border: 1px solid #0000001c;
 	border-radius: 5px;
 	padding: 8px;

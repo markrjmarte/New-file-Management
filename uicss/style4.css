@@ -1,7 +1,7 @@
 .card:hover {
   border-radius: 30px;
   box-shadow: 15px 15px 30px #bebebe,
-             -15px -15px 30px #ffffff;
+             -15px -15px 30px var(--light);
 }
 
 .viewprofile_card {
@@ -12,7 +12,7 @@
 .folder-item:hover {
   border-radius: 30px;
   box-shadow: 15px 15px 30px #bebebe,
-             -15px -15px 30px #ffffff;
+             -15px -15px 30px var(--light);
 }
 
 .file-item:hover {
@@ -26,6 +26,7 @@
 }
 
 .table-row:hover {
-  border-radius: 20px;
+  border-radius: 20px !important;
   background-color: var(--light-blue ) !important;
+  border-radius: 60px !important;
 }

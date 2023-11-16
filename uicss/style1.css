@@ -219,7 +219,7 @@ body {
 }
 #content nav .bx.bx-menu {
     cursor: pointer;
-    color: var(--dark);
+    color: var(--blue);
     font-weight: bold;
     font-size: x-large;
 }
@@ -233,7 +233,6 @@ body {
 #content nav form {
 	max-width: 400px;
 	width: 100%;
-	margin-right: auto;
 }
 #content nav form .form-input {
 	display: flex;
@@ -389,6 +388,12 @@ body {
 	grid-gap: 24px;
 	box-shadow: 1px 1px 2px 0 #CCCCCC;
 }
+
+#content main .box-info li:hover {
+	box-shadow: 15px 15px 30px #bebebe,
+	-15px -15px 30px var(--light);
+}
+
 #content main .box-info li .bx {
 	width: 80px;
 	height: 80px;
@@ -464,10 +469,9 @@ body {
 	border-collapse: collapse;
 }
 #content main .table-data .order table th {
-	padding-bottom: 12px;
-	font-size: 13px;
+	/* padding-bottom: 12px;
+	font-size: 13px; */
 	text-align: left;
-	border-bottom: 1px solid var(--grey);
 }
 #content main .table-data .order table td {
 	padding: 16px 0;

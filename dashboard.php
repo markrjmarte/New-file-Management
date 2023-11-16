@@ -1,7 +1,7 @@
 <head>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="style2.css">
-	<link rel="stylesheet" href="style4.css">
+	<link rel="stylesheet" href="uicss/style.css">
+	<link rel="stylesheet" href="uicss/style2.css">
+	<link rel="stylesheet" href="uicss/style4.css">
 </head>
 <style>
 .notification-image {
@@ -10,7 +10,8 @@
 }
 .slsulogo {
     width: 70%;
-    margin: 20px 45px 0px;
+    margin: 30px 45px 0px;
+	filter: drop-shadow(0px 0px 2px var(--blue));
 }
 .contact-avatar-image {
     width: 150px; 
@@ -39,7 +40,7 @@ if ($resultPersonalFiles) {
     $totalPersonalFiles = "Error fetching data";
 }
 
-$queryNumberofFaculties = "SELECT COUNT(*) AS number_of_faculties FROM users WHERE type = 2";
+$queryNumberofFaculties = "SELECT COUNT(*) AS number_of_faculties FROM users";
 $resultNumberofFaculties = $conn->query($queryNumberofFaculties);
 
 if ($resultNumberofFaculties) {
@@ -191,6 +192,12 @@ if ($resultnotifi_count) {
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu icon' ></i>
+			<form>
+				<div class="form-input">
+					<input type="search" placeholder="Search..." id="search">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
 				<!-- Notification -->
 				<li class="custom-dropdown">
                     <button class="notify-toggler custom-dropdown-toggler">
@@ -249,12 +256,6 @@ if ($resultnotifi_count) {
 								</div>
 							</div>
                      	</div>
-                     <!-- <footer class="border-top dropdown-notify-footer">
-                        <div class="d-flex justify-content-between align-items-center py-2 px-4">
-                          <span>Last updated</span>
-                          <a id="refress-button" href="javascript:" class="btn mdi mdi-cached btn-refress"></a>
-                        </div>
-                      </footer> -->
                     </div>
             	</li>
 				<!-- Notification -->
@@ -327,7 +328,7 @@ if ($resultnotifi_count) {
 					<div class="card-body">
 						<table id="productsTabledashboard" style="width:100%">
 							<h4 class = "table-title">List of all files</h4>
-							<thead>
+							<!-- <thead>
 								<tr>
 									<th scope="col">No.</th>
 									<th scope="col"> Filename</th>
@@ -337,7 +338,7 @@ if ($resultnotifi_count) {
 									<th scope="col"> Extension</th>
 									<th>Status</th>
 								</tr>
-							</thead>
+							</thead> -->
 							<tbody>
 								<?php
 									$count = 1;
@@ -417,3 +418,24 @@ if ($resultnotifi_count) {
 	<script src="plugins/nprogress/nprogress.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="script.js"></script>
+
+	<script>
+	$(document).ready(function() {
+		$('#search').keyup(function() {
+			var searchTerm = $(this).val().toLowerCase();
+
+			// Filter folders based on folder names
+			$('.folder-item').each(function() {
+				var folderName = $(this).find('h3').text().toLowerCase();
+				$(this).toggle(folderName.includes(searchTerm));
+			});
+
+			// Filter files based on filenames and dates
+			$('.file-item').each(function() {
+				var fileName = $(this).find('td:nth-child(2)').text().toLowerCase();
+				var fileDate = $(this).find('td:nth-child(3)').text().toLowerCase();
+				$(this).toggle(fileName.includes(searchTerm) || fileDate.includes(searchTerm));
+			});
+		});
+	});
+	</script>

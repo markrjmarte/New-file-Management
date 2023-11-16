@@ -1,18 +1,19 @@
 
 <head>
-	<link rel="stylesheet" href="style1.css">
-	<link rel="stylesheet" href="style2.css">
-	<link rel="stylesheet" href="style5.css">
-	<link rel="stylesheet" href="style4.css">
+	<link rel="stylesheet" href="uicss/style1.css">
+	<link rel="stylesheet" href="uicss/style2.css">
+	<link rel="stylesheet" href="uicss/style5.css">
+	<link rel="stylesheet" href="uicss/style4.css">
 </head>
 <style>
-	.avatar-image {
+.avatar-image {
     width: 200px; 
     height: 200px;
 }
 .slsulogo {
     width: 70%;
-    margin: 20px 45px 0px;
+    margin: 30px 45px 0px;
+	filter: drop-shadow(0px 0px 2px var(--blue));
 }
 .notification-image {
     width: 50px; 
@@ -35,6 +36,10 @@
     padding: 2rem;
 }
 
+#content main .table-data > div {
+    background: none;
+
+}
 </style>
 <?php 
 include('db_connect.php');
@@ -197,12 +202,6 @@ if (isset($_GET['id'])) {
 								</div>
 							</div>
                      	</div>
-                     <!-- <footer class="border-top dropdown-notify-footer">
-                        <div class="d-flex justify-content-between align-items-center py-2 px-4">
-                          <span>Last updated</span>
-                          <a id="refress-button" href="javascript:" class="btn mdi mdi-cached btn-refress"></a>
-                        </div>
-                      </footer> -->
                     </div>
             	</li>
 				<!-- Notification -->
@@ -676,10 +675,6 @@ if (isset($_GET['id'])) {
 				window.open('display_file.php?id=' + fileId);
 				console.log('display_file.php?id=' + fileId);
 			})
-			// 	$(document).bind("click", function(event) {
-			// 	$("div.custom-menu").hide();
-			// 	$('#file-item').removeClass('active')
-			// });
 
 			$(document).keyup(function(e){
 

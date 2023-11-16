@@ -1700,7 +1700,7 @@ body.tox-dialog__disable-scroll {
   position: relative;
 }
 .tox .tox-edit-area::before {
-  border: 2px solid #FFFFFF;
+  border: 2px solid var(--light);
   border-radius: 4px;
   content: '';
   inset: 0;

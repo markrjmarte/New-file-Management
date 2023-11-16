@@ -39,7 +39,6 @@
 </head>
 <style>
 .avatar {
-    width: 50%;
     height: 50%;
     border-radius: 50%;
     position: absolute;
@@ -48,7 +47,8 @@
 }
 .slsulogo {
     width: 70%;
-    margin: 20px 45px 0px;
+    margin: 30px 45px 0px;
+	filter: drop-shadow(0px 0px 2px var(--blue));
 }
   #login-left{
     position: absolute;
