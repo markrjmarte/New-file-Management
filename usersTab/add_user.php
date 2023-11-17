@@ -3,16 +3,15 @@
 	<link rel="stylesheet" href="uicss/style1.css">
 	<link rel="stylesheet" href="uicss/style2.css">
 	<link rel="stylesheet" href="uicss/style5.css">
-	<link rel="stylesheet" href="uicss/style4.css">
 </head>
 <style>
 	.avatar-image {
-    width: 100px; 
-    height: 100px;
+    width: 200px; 
+    height: 200px;
 }
 .slsulogo {
     width: 70%;
-    margin: 30px 45px 0px;
+    margin: 20px 45px 0px;
 	filter: drop-shadow(0px 0px 2px var(--blue));
 }
 .notification-image {
@@ -20,25 +19,40 @@
     height: 50px;
 }
 .contact-avatar-image {
-    width: 150px; 
-    height: 150px;
+    width: 200px; 
+    height: 200px;
 }
+
+.card-default .card-header-bg {
+    height: 10px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+
+.card-profile .card-profile-body {
+    flex-direction: row-reverse;
+    justify-content: space-evenly;;
+    padding: 2rem;
+}
+#content main .table-data > div {
+    background: none;
+}
+#content main .table-data .order{
+	box-shadow: none;
+}
+#content main .table-data .order{
+	box-shadow: none;
+}
+
 </style>
 <?php 
 include('db_connect.php');
-if(isset($_SESSION['login_id'])){
-	$user_id = $_SESSION['login_id'];
-	$loginUsername = $_SESSION['login_username'];
-	$user = $conn->query("SELECT * FROM users WHERE id = $user_id");
-	if($user && $user->num_rows > 0) {
-		$meta = $user->fetch_assoc();
+if(isset($_GET['id'])){
+	$user = $conn->query("SELECT * FROM users where id =".$_GET['id']);
+	foreach($user->fetch_array() as $k =>$v){
+		$meta[$k] = $v;
 	}
 }
-
-$users = $conn->query("SELECT * FROM users WHERE id != $user_id");
-$selected_user = isset($_GET['user_id']) ? $_GET['user_id'] : ''; 
-$announcement_query = $conn->query("SELECT * FROM announcement order by Date_uploaded DESC;");
-
 ?>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
@@ -86,14 +100,14 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 				</a>
             </li>
 			
-			<li class="active">
+			<li>
 				<a href="index.php?page=usersTab/Announcement">
 					<i class='bx bxs-message-dots' ></i>
 					<span class="text">Announcement</span>
 				</a>
 			</li>
 
-			<li>
+			<li class = "active">
 				<a href="index.php?page=faculties">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Manage List</span>
@@ -195,7 +209,6 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
                     </div>
             	</li>
 				<!-- Notification -->
-
 			<a  href="index.php?page=pages/settings/user-settings" class="profile">
 				<img src="assets/img/profiles/<?php echo $_SESSION['login_profile_image'] ?>">
 			</a>
@@ -206,53 +219,104 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 		<main>
 			<div class="head-title" style = "justify-content: space-between;">
 				<div class="pagetitle">
-					<h1 style = "font-weight: 600;">Create Announcement</h1>
-					<ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.php?page=usersTab/Announcement"> Home</a></li> 
-					<li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> New announcement </a></ol>
+					<h1 style = "font-weight: 600;">Add faculty</h1>
+					<ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.php?page=faculties"> Home</a></li> 
+					<li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> Add faculty </a></li></ol>
 				</div><!-- End Page Title -->
 				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
 					<div class="toast-body text-white">
 					</div>
 				</div>
 			</div>
-			
-				<form action="" id="add-announcement" style = "margin-top: 24px;">
-					<div class="card card-default">
-						<div class="card-body">
 
+			<form action="" id="manage-user">
+				<input type="hidden" name="id" value="<?php echo isset($meta['id']) ? $meta['id'] : ''; ?>">
+				<div class="row mb-2" style = "margin-top: 24px;">
+
+					<div class="col-lg-4 col-md-5 col-sm-4">
+						<div class="main-box clearfix">
 							<div class="form-group">
-								<label for="firstName">Title:</label>
-								<input name="title" id="title" type="text" class="form-control"  style = "padding-left: 10%;" required>
-							</div>
-							<div class="form-group">
-								<label for="" class="control-label">Description</label>
-								<textarea name="description" id="" cols="30" rows="10" class="form-control" required></textarea>
-							</div>
-							<div class="row mb-2">
-								<div class= "col-lg-6 mb-3">
-									<div class="custom-file">
-										<input type="file" class="custom-file-input" name="upload" id="upload" onchange="displayname(this,$(this))">
-										<label class="custom-file-label" for="upload">Choose file</label>
-									</div>
+								<div class="preview" style ="    width: 93%; height: 440px; margin-left: 15px; margin-top: 40px;">
+									<center><img src="assets/img/profiles/<?php echo isset($meta['profile_image']) ? $meta['profile_image']: '' ?>" id="img" 
+									class="profile-img img-responsive center-block " style ="width: 93%; border-radius: 20px; height: 440px;"></center>
 								</div>
-								<div class= "col-lg-6">
-									<div class="form-group" id="userDropdown">
-										<select name="user_id" id="user_id" class="form-control" required>
-												<option value="">Select a user</option>
-												<option value="0" <?php echo ($selected_user == '0') ? 'selected' : ''; ?>>All Users</option>
-												<?php while ($user = $users->fetch_assoc()): ?>
-													<option value="<?php echo $user['id']; ?>" <?php echo ($selected_user == $user['id']) ? 'selected' : ''; ?>><?php echo $user['username']; ?></option>
-												<?php endwhile; ?>
-										</select>
-									</div>
+									<center><input type="file" name="profile_image" id="profile_image" class="form-control-file" style="display: none;">
+            						<a style="color: var(--blue);" href="javascript:void(0);" id="toggleFileInput" class="btn btn-link">Change Profile Image</a></center>
 								</div>
 							</div>
 						</div>
-						<div class="modal-footer px-4">
-							<button type="submit" class="btn btn-primary btn-pill">Post</button>
-						</div>
-					</div>
-				</form>
+						<div class="col-lg-8 col-md-8 col-sm-8">
+							<div class="card card-default">
+								<div class="card-body">
+									<div class="row mb-2" style = "padding-top: 70px;">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="firstName">Name:</label>
+												<input type="text" name="name" id="name" class="form-control" style="color: var(--blue); padding-left: 10%;" value="<?php echo isset($meta['name']) ? $meta['name']: '' ?>">
+											</div>
+										</div>
+
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="UserType">User type:</label>
+												<select style="color: var(--blue); padding-left: 10%;" name="type" id="type" class="form-control">
+													<option value="1" <?php echo isset($meta['type']) && $meta['type'] == 2 ? 'selected' : ''; ?>>User</option>
+													<option value="2" <?php echo isset($meta['type']) && $meta['type'] == 1 ? 'selected' : ''; ?>>Administrator</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-lg-6">
+											<div class="form-group mb-4">
+												<label for="userName">Username:</label>
+																					<input type="text" name="username" id="username" class="form-control" style="color: var(--blue); padding-left: 10%;" value="<?php echo isset($meta['username']) ? $meta['username']: '' ?>">
+																			</div>
+																		</div>
+
+																		<div class="col-lg-6">
+																			<div class="form-group mb-4">
+																				<label for="email">Email:</label>
+																				<input type="text" name="email" id="email" class="form-control" style="color: var(--blue); padding-left: 10%;" value="<?php echo isset($meta['email']) ? $meta['email']: '' ?>">
+																			</div>
+																		</div>
+
+																		<div class="col-lg-6">
+																			<div class="form-group mb-4">
+																				<label for="password">Password:</label>
+																				<input type="text" name="password" id="password" class="form-control" style="color: var(--blue); padding-left: 10%;" value="<?php echo isset($meta['password']) ? $meta['password']: '' ?>">
+																			</div>
+																		</div>
+
+																		<div class="col-lg-6">
+																			<div class="form-group mb-4">
+																				<label for="phone">Phone No.:</label>
+																				<input type="text" name="phone" id="phone"class="form-control" style="color: var(--blue); padding-left: 10%;" value="<?php echo isset($meta['phone']) ? $meta['phone']: '' ?>">
+																			</div>
+																		</div>
+
+																		<div class="col-lg-6">
+																			<div class="form-group mb-4">
+																				<label for="position">Position:</label>
+																				<input type="text" name="job" id="job" class="form-control" style="color: var(--blue); padding-left: 10%;" value="<?php echo isset($meta['job']) ? $meta['job']: '' ?>">
+																			</div>
+																		</div>
+
+																		<div class="col-lg-6">
+																			<div class="form-group mb-4">
+																				<label for="adress">Address:</label>
+																				<input type="text" name="adress" id="adress" class="form-control" style="color: var(--blue); padding-left: 10%;" value="<?php echo isset($meta['adress']) ? $meta['adress']: '' ?>">
+																			</div>
+																		</div>
+																	</div>
+																	<div class="modal-footer px-4">
+																		<button type="submit" class="btn btn-primary btn-pill">Save Contact</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</form>
+				
+
 			<!-- ======= Footer ======= -->
 			<footer id="footer" class="mt-auto footer">
 			<div class="copyright">
@@ -269,7 +333,6 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 	<!-- CONTENT -->
 	<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
 	<script src="plugins/simplebar/simplebar.min.js"></script>
-	
 	<script src="js/mono.js"></script>
 	<script src="plugins/nprogress/nprogress.js"></script>
 	<script src="js/custom.js"></script>
@@ -277,40 +340,65 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 
 	<script>
 
-		function displayname(input, _this) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function (e) {
-					_this.siblings('label').html(input.files[0]['name']);
-				}
-				reader.readAsDataURL(input.files[0]);
+		document.getElementById("toggleFileInput").addEventListener("click", function() {
+			document.getElementById("profile_image").click();
+		});
+
+		profile_image.onchange = evt => {
+        const [file] = profile_image.files
+			if (file) {
+			img.src = URL.createObjectURL(file)
 			}
 		}
 
-		$('#add-announcement').submit(function(e){
+		$('#manage-user').submit(function(e){
 			e.preventDefault();
 			start_load();
 
 			var formData = new FormData(this);
-			formData.append('action', 'add_announcement'); 
+			formData.append('action', 'save_user'); 
 
 			$.ajax({
-				url: 'ajax.php?action=add_announcement',
+				url: 'ajax.php?action=save_user',
 				method: 'POST',
 				data: formData,
 				processData: false,
 				contentType: false,
 				success: function(resp) {
 					if(resp == 1) {
-						alert_toast("Announcement successfully posted", 'success');
+						alert_toast("New user successfully created", 'success');
 						setTimeout(function(){
 							location.reload();
 						}, 1500);
-						
 					}
 				}
 			});
 		});
 
 	</script>
-	
+
+	<script>
+
+		//viewfile 
+			$('.file-item').dblclick(function(e){
+				e.preventDefault()
+				if($(this).find('input.rename_file').is(':visible') == true)
+				return false;
+				var fileId = $(this).attr('data-id');
+				window.open('display_file.php?id=' + fileId);
+				console.log('display_file.php?id=' + fileId);
+			})
+
+			$(document).keyup(function(e){
+
+			if(e.keyCode === 27){
+				$("div.custom-menu").hide();
+			$('#file-item').removeClass('active')
+
+			}
+
+		});
+
+		
+	</script>
+

@@ -3,7 +3,6 @@
 	<link rel="stylesheet" href="uicss/style1.css">
 	<link rel="stylesheet" href="uicss/style2.css">
 	<link rel="stylesheet" href="uicss/style5.css">
-	<link rel="stylesheet" href="uicss/style4.css">
 </head>
 <style>
 .avatar-image {
@@ -38,7 +37,9 @@
 
 #content main .table-data > div {
     background: none;
-
+}
+#content main .table-data .order{
+	box-shadow: none;
 }
 </style>
 <?php 
@@ -224,14 +225,8 @@ if (isset($_GET['id'])) {
 				</div>
 			</div>
 
-            <!-- Folder Display -->
-			<ul class="box-info">
-				
-            </ul>
-            <!-- END Folder display -->
-
 				<!-- user datas -->
-				<div class="row" id="user-profile">
+				<div class="row" id="user-profile" style = "margin-top: 24px;">
 					<?php
 					if(isset($_SESSION['login_id'])){
 						$user_id = $_SESSION['login_id'];
@@ -611,7 +606,15 @@ if (isset($_GET['id'])) {
 					}
 					?>
 				</div>
-
+			<!-- ======= Footer ======= -->
+			<footer id="footer" class="mt-auto footer">
+			<div class="copyright">
+			&copy; Copyright <strong><span>File Repository</span></strong>.
+			</div>
+			<div class="credits">
+				Designed by <a href="https://www.facebook.com/">Bright Group</a>
+			</div>
+			</footer><!-- End Footer -->
 
 			
 		</main>

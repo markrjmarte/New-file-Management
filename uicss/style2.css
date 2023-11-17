@@ -1804,11 +1804,12 @@ pre code {
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
-  background-color: var(--light);
+  color: var(--blue);
+  background-color: var(
+--light);
   background-clip: padding-box;
-  border: 1px solid #e5e9f2;
-  border-radius: 0.25rem;
+  border: 1px solid var(--blue);
+  border-radius: 20px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -8200,6 +8201,7 @@ button.bg-smoke:focus {
 .mt-auto,
 .my-auto {
   margin-top: auto !important;
+  padding-top: inherit;
 }
 
 .mr-auto,
@@ -12472,6 +12474,9 @@ code {
   }
   .main-header .navbar {
     margin: 0;
+  }
+  .inactive {
+    display: none;
   }
 }
 /* Header Fix */
@@ -17055,10 +17060,7 @@ div.copied {
 
 /*===== FOOTER =====*/
 .copyright {
-  padding-left: 1rem;
-  padding-right: 1rem;
   padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 @media (min-width: 992px) {
   .copyright {
@@ -17077,4 +17079,16 @@ div.copied {
   text-overflow: ellipsis;
   white-space: normal;
   word-wrap: break-word;
+}
+
+.footer .credits {
+  padding-top: 5px;
+  text-align: center;
+  font-size: 13px;
+  color: #012970;
+}
+
+.footer .copyright {
+  text-align: center;
+  color: #012970;
 }

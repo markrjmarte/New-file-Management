@@ -198,12 +198,6 @@ INNER JOIN users ON users_logs.users = users.username order by users_logs.id DES
 				</div>
 			</div>
 
-			<!-- Folder Display -->
-			<ul class="box-info">
-				
-			</ul>
-			<!-- END Folder display -->
-
 			<!-- Data Table -->
 			<div class="table-data">
 				<div class="order">
@@ -239,6 +233,15 @@ INNER JOIN users ON users_logs.users = users.username order by users_logs.id DES
 				</div>
 			</div>
 			<!-- END Data Table -->
+			<!-- ======= Footer ======= -->
+			<footer id="footer" class="mt-auto footer">
+			<div class="copyright">
+			&copy; Copyright <strong><span>File Repository</span></strong>.
+			</div>
+			<div class="credits">
+				Designed by <a href="https://www.facebook.com/">Bright Group</a>
+			</div>
+			</footer><!-- End Footer -->
 		</main>
 		<!-- MAIN -->
 	</section>

@@ -269,7 +269,14 @@ Class Action {
 		$data .= ", job = '$job' ";
 		$data .= ", email = '$email' ";
 		$data .= ", adress = '$adress' ";
-	
+		
+		if (!empty($_FILES['profile_image']['name'])) {
+			$profile_image = $_FILES['profile_image']['name'];
+			$temp_image = $_FILES['profile_image']['tmp_name'];
+			$profile_image_path = 'assets/img/profiles/' . $profile_image; // Update this path
+			move_uploaded_file($temp_image, $profile_image_path);
+			$data .= ", profile_image = '$profile_image'";
+		}
 	
 		if(empty($id)){
 			$save = $this->db->query("INSERT INTO users set ".$data);
@@ -281,6 +288,7 @@ Class Action {
 			return 1;
 		}
 	}
+
 	function update_user(){
 		extract($_POST);
 	

@@ -238,12 +238,6 @@ if (isset($_GET['notification_id'])) {
 				</div>
 			</div>
 
-			<!-- Folder Display -->
-			<ul class="box-info">
-				
-			</ul>
-			<!-- END Folder display -->
-			
 			<!-- Data Table -->
 			<div class="table-data">
 				<div class="order">
@@ -323,7 +317,15 @@ if (isset($_GET['notification_id'])) {
 				</div>
 			</div>
 			<!-- End Contact Modal -->
-
+			<!-- ======= Footer ======= -->
+			<footer id="footer" class="mt-auto footer">
+			<div class="copyright">
+			&copy; Copyright <strong><span>File Repository</span></strong>.
+			</div>
+			<div class="credits">
+				Designed by <a href="https://www.facebook.com/">Bright Group</a>
+			</div>
+			</footer><!-- End Footer -->
 
 
 			

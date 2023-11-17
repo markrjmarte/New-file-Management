@@ -192,12 +192,6 @@ if ($resultnotifi_count) {
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu icon' ></i>
-			<form>
-				<div class="form-input">
-					<input type="search" placeholder="Search..." id="search">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
 				<!-- Notification -->
 				<li class="custom-dropdown">
                     <button class="notify-toggler custom-dropdown-toggler">
@@ -279,46 +273,59 @@ if ($resultnotifi_count) {
 				</div>
 			</div>
 
-			<ul class="box-info">
+			<ul class="box-info" style = "margin-top: 24px;">
 				<?php if($_SESSION['login_type'] == 1): ?>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<h3><?php echo $totalNumberofFaculties; ?></h3>
-						<p>Number of Faculty</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-add-to-queue' ></i>
-					<span class="text">
-						<h3><?php echo $totalFiles; ?></h3> 
-						<p>Total Files</p>
-					</span>
-				</li>
+				<a href="index.php?page=faculties">
+					<li>
+						<i class='bx bxs-group' ></i>
+						<span class="text">
+							<h3><?php echo $totalNumberofFaculties; ?></h3>
+							<p>Number of Faculty</p>
+						</span>
+					</li>
+				</a>
+				<a href="index.php?page=myfiles">
+					<li>
+						<i style = "background: var(--light-yellow); color: var(--yellow);" 
+						class='bx bxs-add-to-queue' ></i>
+						<span class="text">
+							<h3><?php echo $totalFiles; ?></h3> 
+							<p>Total Files</p>
+						</span>
+					</li>
+				</a>
 				<?php endif; ?>
-				<li>
-					<i class='bx bxs-file' ></i>
-					<span class="text">
-						<h3><?php echo $totalPersonalFiles; ?></h3>
-						<p>Personal Files</p>
-					</span>
-				</li>
 				<?php if($_SESSION['login_type'] == 2): ?>
-				<li>
-					<i class='bx bxs-message-dots' ></i>
-					<span class="text">
-						<h3><?php echo $notificount; ?></h3> 
-						<p>Total Announcement</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-share-alt' ></i>
-					<span class="text">
-						<h3><?php echo $totalPublicFiles; ?></h3> 
-						<p>Shared Files</p>
-					</span>
-				</li>
+				<a href="index.php?page=usersTab/Announcement">
+					<li>
+						<i class='bx bxs-message-dots' ></i>
+						<span class="text">
+							<h3><?php echo $notificount; ?></h3> 
+							<p>Total Announcement</p>
+						</span>
+					</li>
+				</a>
+				<a href="index.php?page=sharedfiles">
+					<li>
+						<i style = "background: var(--light-yellow); color: var(--yellow);"
+						class='bx bxs-share-alt' ></i>
+						<span class="text">
+							<h3><?php echo $totalPublicFiles; ?></h3> 
+							<p>Shared Files</p>
+						</span>
+					</li>
+				</a>
 				<?php endif; ?>
+				<a href="index.php?page=myfiles">
+					<li>
+						<i style = "background: var(--light-orange); color: var(--orange);" 
+						class='bx bxs-file' ></i>
+						<span class="text">
+							<h3><?php echo $totalPersonalFiles; ?></h3>
+							<p>Personal Files</p>
+						</span>
+					</li>
+				</a>
 			</ul>
 
 
@@ -328,7 +335,7 @@ if ($resultnotifi_count) {
 					<div class="card-body">
 						<table id="productsTabledashboard" style="width:100%">
 							<h4 class = "table-title">List of all files</h4>
-							<!-- <thead>
+							<thead>
 								<tr>
 									<th scope="col">No.</th>
 									<th scope="col"> Filename</th>
@@ -338,7 +345,7 @@ if ($resultnotifi_count) {
 									<th scope="col"> Extension</th>
 									<th>Status</th>
 								</tr>
-							</thead> -->
+							</thead>
 							<tbody>
 								<?php
 									$count = 1;
@@ -407,10 +414,22 @@ if ($resultnotifi_count) {
 				</div>
 			</div>
 			<!-- END Data Table -->
+
+			<!-- ======= Footer ======= -->
+			<footer id="footer" class="mt-auto footer">
+			<div class="copyright">
+			&copy; Copyright <strong><span>File Repository</span></strong>.
+			</div>
+			<div class="credits">
+				Designed by <a href="https://www.facebook.com/">Bright Group</a>
+			</div>
+			</footer><!-- End Footer -->
 		</main>
 		<!-- MAIN -->
+	
 	</section>
 	<!-- CONTENT -->
+	
 
 	<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
 	<script src="plugins/simplebar/simplebar.min.js"></script>

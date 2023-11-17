@@ -23,10 +23,30 @@
 		header('location:login.php');
 		include('./header.php'); 
 	?>
+
+  <!-- <script type="text/javascript">
+		$(window).load(function() {
+			$(".loader").fadeOut("slow");
+		})
+	</script> -->
+  
+<!-- <style>
+    
+    .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('assets/img/logo1.png') 50% 50% no-repeat rgb(249,249,249);
+    }
+    
+	</style> -->
 </head>
 <body>
 
-	 
+  <!-- <div class="loader"></div> -->
 	<main id="main" class="main">
         <?php $page = isset($_GET['page']) ? $_GET['page'] :'dashboard'; ?>
       <?php include $page.'.php' ?>
@@ -46,7 +66,6 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" id='confirm' onclick="">Continue</button>
-            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
           </div>
           </div>
         </div>
@@ -63,7 +82,6 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Save</button>
-                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
                 </div>
           </div>
         </div>
@@ -73,7 +91,21 @@
   <script src="assets/js/main.js"></script>
 </body>
 <script>
-	 window.start_load = function(){
+
+  // $(window).on('load', function() {
+  //   $(".loader").fadeOut("slow");
+  // });
+
+  // $(document).ready(function() {
+  //   start_load();
+
+  //   $('#preloader').fadeOut('fast', function() {
+  //     $(this).remove();
+  //     end_load(); // Hide loader when content is loaded
+  //   });
+  // });
+
+ window.start_load = function(){
     $('body').prepend('<di id="preloader2"></di>')
   }
   window.end_load = function(){

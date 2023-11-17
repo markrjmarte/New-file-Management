@@ -256,12 +256,6 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 				</div>
 			</div>
 
-			<!-- Folder Display -->
-			<ul class="box-info">
-				
-			</ul>
-			<!-- END Folder display -->
-
 			<!-- Data Table -->
 			<div class="table-data">
 				<div class="order">
@@ -348,6 +342,15 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 				</div>
 			</div>
 			<!-- END Data Table -->
+			<!-- ======= Footer ======= -->
+			<footer id="footer" class="mt-auto footer">
+			<div class="copyright">
+			&copy; Copyright <strong><span>File Repository</span></strong>.
+			</div>
+			<div class="credits">
+				Designed by <a href="https://www.facebook.com/">Bright Group</a>
+			</div>
+			</footer><!-- End Footer -->
 		</main>
 		<!-- MAIN -->
 	</section>

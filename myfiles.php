@@ -175,12 +175,12 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 							</style>
 			</div> -->
 			<i class='bx bx-menu icon' ></i>
-			<form>
+			<!-- <form>
 				<div class="form-input">
 					<input type="search" placeholder="Search..." id="search">
 					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 				</div>
-			</form>
+			</form> -->
 			<!-- Notification -->
 			<li class="custom-dropdown">
                     <button class="notify-toggler custom-dropdown-toggler">
@@ -285,7 +285,7 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 			</div>
 
 			<!-- Folder Display -->
-			<ul class="box-info">
+			<ul class="box-info" style = "margin-top: 24px;">
 				<!-- Display all folders here based on the above query -->
 				<?php
 				while ($folder = $folders->fetch_assoc()) {
@@ -415,8 +415,18 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 				</div>
 			</div>
 			<!-- END Data Table -->
-		</main>
+			<!-- ======= Footer ======= -->
+			<footer id="footer" class="mt-auto footer">
+			<div class="copyright">
+			&copy; Copyright <strong><span>File Repository</span></strong>.
+			</div>
+			<div class="credits">
+				Designed by <a href="https://www.facebook.com/">Bright Group</a>
+			</div>
+			</footer><!-- End Footer -->
 		<!-- MAIN -->
+		</main>
+		
 	</section>
 	<!-- CONTENT -->
 	<script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>

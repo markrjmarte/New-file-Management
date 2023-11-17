@@ -199,16 +199,13 @@ if (isset($_GET['id'])) {
 			<div class="head-title" style = "justify-content: space-between;">
 				<div class="pagetitle">
 					<h1 style = "font-weight: 600;">Manage faculty</h1>
-					<ol class="breadcrumb"><li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> Home </a></li></ol>
+					<ol class="breadcrumb"><li class="breadcrumb-item"><a style= "color: var(--dark-grey);"> Home </a></li>
+					<li class="breadcrumb-item"><a href="index.php?page=usersTab/add_user"> Add faculty </a></li></ol>
 				</div><!-- End Page Title -->
 				<div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
-						<div class="toast-body text-white">
-						</div>
+					<div class="toast-body text-white">
+					</div>
 				</div>
-				<div id="action_buttons" style="margin-block-end: auto;">
-					<button id="new_user" type="button" class="btn btn-primary btn-pill">Add faculty</button>
-				</div>
-				
 			</div>
 
 			<!-- Folder Display -->
@@ -227,7 +224,7 @@ if (isset($_GET['id'])) {
 					FROM users ORDER BY id DESC;");
 				while ($row = $users->fetch_assoc()):
 				?>
-				<div class="col-lg-6 col-xl-4 col-xxl-3" data-id="<?php echo $row['id'] ?>">
+				<div style = "margin-bottom: 10px;" class="col-lg-6 col-xl-4 col-xxl-3" data-id="<?php echo $row['id'] ?>">
 					<div class="card card-default mt-7">
 						<div class="card-body text-center">
 							<a class="d-block mb-2" href="javascript:void(0)" data-toggle="modal" data-target="#modal-contact"
@@ -341,6 +338,15 @@ if (isset($_GET['id'])) {
 					</div>
 				</div>
 			<!-- End Contact Modal -->
+			<!-- ======= Footer ======= -->
+			<footer id="footer" class="mt-auto footer">
+			<div class="copyright">
+			&copy; Copyright <strong><span>File Repository</span></strong>.
+			</div>
+			<div class="credits">
+				Designed by <a href="https://www.facebook.com/">Bright Group</a>
+			</div>
+			</footer><!-- End Footer -->
 			
 		</main>
 		<!-- MAIN -->
@@ -349,30 +355,6 @@ if (isset($_GET['id'])) {
 	<script src="plugins/simplebar/simplebar.min.js"></script>
 	<script src="js/mono.js"></script>
 	<script src="script.js"></script>
-	<script>
-		
-		$(document).ready(function () {
-			
-			function showButtons() {
-				$('#action_buttons').show();
-			}
-
-			function hideButtons() {
-				$('#action_buttons').hide();
-			}
-			
-			$('.toast').on('hidden.bs.toast', function () {
-				showButtons();
-			});
-
-			
-			$('.toast').on('show.bs.toast', function () {
-				hideButtons();
-			});
-
-			showButtons();
-		});
-	</script>
 	<script>
 	// JavaScript to update the modal content when a user is clicked
 	$('.card-body a[data-toggle="modal"]').click(function () {
@@ -416,11 +398,6 @@ if (isset($_GET['id'])) {
 			view_user(id);
 		});
 	});
-
-
-	$('#new_user').click(function(){
-        uni_modal('New User','manage_user.php')
-    })
 
 	window.confirm = function ($msg = '', $func = '', $params = []) {
         $('#confirm_modal #confirm').attr('onclick', $func + "(" + $params.join(',') + ")");

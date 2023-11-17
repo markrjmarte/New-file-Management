@@ -37,7 +37,12 @@
 }
 #content main .table-data > div {
     background: none;
-
+}
+#content main .table-data .order{
+	box-shadow: none;
+}
+#content main .table-data .order{
+	box-shadow: none;
 }
 
 </style>
@@ -225,14 +230,8 @@ if (isset($_GET['id'])) {
 				</div>
 			</div>
 
-            <!-- Folder Display -->
-			<ul class="box-info">
-				
-            </ul>
-            <!-- END Folder display -->
-
 				<!-- user datas -->
-				<div class="row" id="user-profile">
+				<div class="row" style = "margin-top: 24px;" id="user-profile">
 					<?php
 					if (isset($_GET['id'])) {
 						$user_id = $_GET['id'];
@@ -558,7 +557,15 @@ if (isset($_GET['id'])) {
 					?>
 				</div>
 
-
+			<!-- ======= Footer ======= -->
+			<footer id="footer" class="mt-auto footer">
+			<div class="copyright">
+			&copy; Copyright <strong><span>File Repository</span></strong>.
+			</div>
+			<div class="credits">
+				Designed by <a href="https://www.facebook.com/">Bright Group</a>
+			</div>
+			</footer><!-- End Footer -->
 			
 		</main>
 		<!-- MAIN -->
