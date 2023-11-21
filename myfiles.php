@@ -155,32 +155,7 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
-			<!-- <div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
-						<div class="loader">
-							<img src="assets/img/avatar.png" class="lod ">
-						</div>
-	
-							<style>
-							
-							.loader {
-							position: fixed;
-							left: 0px;
-							top: 0px;
-							width: 100%;
-							height: 100%;
-							z-index: 9999;
-							background: var(--grey);
-							}
-							
-							</style>
-			</div> -->
 			<i class='bx bx-menu icon' ></i>
-			<!-- <form>
-				<div class="form-input">
-					<input type="search" placeholder="Search..." id="search">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form> -->
 			<!-- Notification -->
 			<li class="custom-dropdown">
                     <button class="notify-toggler custom-dropdown-toggler">
@@ -436,24 +411,25 @@ files.description AS Description FROM files INNER JOIN users ON files.user_id = 
 	<script src="js/custom.js"></script>
 	<script src="script.js"></script>
 	<script>
-		
 		$(document).ready(function () {
-			
 			function showButtons() {
-				$('#action_buttons').show();
+			$('#action_buttons').show();
 			}
 
 			function hideButtons() {
-				$('#action_buttons').hide();
+			$('#action_buttons').hide();
 			}
-			
+
 			$('.toast').on('hidden.bs.toast', function () {
-				showButtons();
+			showButtons();
 			});
 
-			
 			$('.toast').on('show.bs.toast', function () {
-				hideButtons();
+			hideButtons();
+			// Scroll to the toaster when it's shown
+			$('html, body').animate({
+				scrollTop: $(".toast").offset().top
+			}, 500);
 			});
 
 			showButtons();

@@ -24,13 +24,20 @@
 		include('./header.php'); 
 	?>
 
-  <!-- <script type="text/javascript">
+  <script>
+		$(window).on("load resize ", function() {
+			var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+			$('.tbl-header').css({'padding-right':scrollWidth});
+		}).resize();
+		</script>
+    
+  <script type="text/javascript">
 		$(window).load(function() {
 			$(".loader").fadeOut("slow");
 		})
-	</script> -->
+	</script>
   
-<!-- <style>
+ <style>
     
     .loader {
     position: fixed;
@@ -42,11 +49,11 @@
     background: url('assets/img/logo1.png') 50% 50% no-repeat rgb(249,249,249);
     }
     
-	</style> -->
+	</style> 
 </head>
 <body>
 
-  <!-- <div class="loader"></div> -->
+ 
 	<main id="main" class="main">
         <?php $page = isset($_GET['page']) ? $_GET['page'] :'dashboard'; ?>
       <?php include $page.'.php' ?>
@@ -91,19 +98,6 @@
   <script src="assets/js/main.js"></script>
 </body>
 <script>
-
-  // $(window).on('load', function() {
-  //   $(".loader").fadeOut("slow");
-  // });
-
-  // $(document).ready(function() {
-  //   start_load();
-
-  //   $('#preloader').fadeOut('fast', function() {
-  //     $(this).remove();
-  //     end_load(); // Hide loader when content is loaded
-  //   });
-  // });
 
  window.start_load = function(){
     $('body').prepend('<di id="preloader2"></di>')
