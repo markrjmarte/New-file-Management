@@ -176,7 +176,7 @@ if ($resultnotifi_count) {
 
 			<?php endif; ?>
 		</ul>
-		<ul class="side-menu">
+		<ul class="side-menu" style="margin-top: 0px;">
 			<li>
 				<a href="index.php?page=pages/settings/user-settings">
 					<i class='bx bxs-cog' ></i>
