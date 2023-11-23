@@ -24,7 +24,7 @@
 		include('./header.php'); 
 	?>
 
-  <script>
+  <!-- <script>
 		$(window).on("load resize ", function() {
 			var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
 			$('.tbl-header').css({'padding-right':scrollWidth});
@@ -35,7 +35,7 @@
 		$(window).load(function() {
 			$(".loader").fadeOut("slow");
 		})
-	</script>
+	</script> -->
   
  <style>
     

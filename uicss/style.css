@@ -611,3 +611,16 @@ body {
 		min-width: 420px;
 	}
 }
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+html {
+    scrollbar-width: none; 
+}
+
+html::-webkit-scrollbar-thumb {
+    display: none; 
+}

@@ -10,9 +10,15 @@
     height: 50px;
 }
 .slsulogo {
-    width: 70%;
+    top: 10%;
+    left: 30%;
+    width: 65%;
     margin: 30px 45px 0px;
-	filter: drop-shadow(0px 0px 2px var(--blue));
+    filter: drop-shadow(0px 0px 2px var(--blue));
+    position: absolute;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 .contact-avatar-image {
     width: 150px; 
@@ -26,8 +32,11 @@ INNER JOIN users ON users_logs.users = users.username order by users_logs.id DES
 ?>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
-		<img src="assets/img/avatar.png" class="slsulogo">
-		<ul class="side-menu top">
+		<div>
+			<img src="assets/img/avatar.png" class="slsulogo">
+			<img src="assets/img/avatar2.png" class="slsulogo">
+		</div>
+		<ul class="side-menu top" style = "margin-top: 240px;">
 			<li>
 				<a href="index.php?page=dashboard">
 					<i class='bx bxs-dashboard'></i>
@@ -252,3 +261,22 @@ INNER JOIN users ON users_logs.users = users.username order by users_logs.id DES
 	<script src="plugins/nprogress/nprogress.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="script.js"></script>
+	<script>
+	// JavaScript or jQuery to toggle avatar visibility
+		document.addEventListener("DOMContentLoaded", function () {
+		var avatars = document.querySelectorAll(".slsulogo");
+		var index = 0;
+		var intervalTime = 3000; // Time between avatar changes in milliseconds (adjust as needed)
+
+		function toggleAvatar() {
+		avatars[index].style.opacity = 0; // Hide the current avatar
+		index = (index + 1) % avatars.length; // Move to the next avatar or back to the start if reached the end
+		avatars[index].style.opacity = 1; // Show the next avatar
+		}
+
+		// Initial visibility setup
+		avatars[0].style.opacity = 1; // Show the first avatar
+
+		setInterval(toggleAvatar, intervalTime); // Start the interval to toggle avatars
+	});
+	</script>
