@@ -11,10 +11,10 @@
     height: 100px;
 }
 .slsulogo {
-    top: 10%;
+    padding-top: 200px;
     left: 30%;
     width: 65%;
-    margin: 30px 45px 0px;
+    margin: 30px 50px 0px;
     filter: drop-shadow(0px 0px 2px var(--blue));
     position: absolute;
     transform: translate(-50%, -50%);
@@ -52,7 +52,7 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 			<img src="assets/img/avatar.png" class="slsulogo">
 			<img src="assets/img/avatar2.png" class="slsulogo">
 		</div>
-		<ul class="side-menu top" style = "margin-top: 240px;">
+		<ul class="side-menu top" style = "margin-top: 260px;">
 			<li>
 				<a href="index.php?page=dashboard">
 					<i class='bx bxs-dashboard'></i>
@@ -339,6 +339,27 @@ $announcement_query = $conn->query("SELECT * FROM announcement order by Date_upl
 		avatars[0].style.opacity = 1; // Show the first avatar
 
 		setInterval(toggleAvatar, intervalTime); // Start the interval to toggle avatars
+	});
+
+	document.addEventListener("DOMContentLoaded", function () {
+    var avatars = document.querySelectorAll(".slsulogo");
+    
+    function positionAvatars() {
+        var windowHeight = window.innerHeight;
+        var sidebarHeight = document.getElementById("sidebar").offsetHeight;
+
+        // Calculate the top position for the avatars
+        var topPosition = (windowHeight - sidebarHeight) / 2;
+
+        // Apply the top position to each avatar
+        avatars.forEach(function (avatar) {
+            avatar.style.top = topPosition + "px";
+        });
+    }
+
+    // Call positionAvatars initially and on window resize
+    positionAvatars();
+    window.addEventListener("resize", positionAvatars);
 	});
 	</script>
 	

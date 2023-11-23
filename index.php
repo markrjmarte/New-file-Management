@@ -15,7 +15,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="assets1/material/css/materialdesignicons.min.css" rel="stylesheet" />
 
-	<title>File Management</title>
+	<title>BEED EFile Management</title>
 
 	<?php
 	session_start();

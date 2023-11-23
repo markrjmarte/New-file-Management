@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>File Management</title>
+  <title>BEED EFile Management</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -50,10 +50,10 @@
     transition: opacity 1s ease-in-out; /* Adjust transition duration as needed */
   }
 .slsulogo {
-    top: 10%;
+    padding-top: 200px;
     left: 30%;
     width: 65%;
-    margin: 30px 45px 0px;
+    margin: 30px 50px 0px;
     filter: drop-shadow(0px 0px 2px var(--blue));
     position: absolute;
     transform: translate(-50%, -50%);
